@@ -1,0 +1,310 @@
+.collection {
+
+    .collection-banner-background, .collection-banner-background-default {
+        display: flex;
+        height: 228px;
+        width: 100%;
+        align-items: center;
+        padding: 48px;
+        background-color: $grey-2;
+        margin-bottom: 48px;
+        background-size: cover;
+        background-position: center;
+        h1 {
+            font-size: $h3;
+            font-weight: 400;
+        }
+        &.hidden {
+            display: none;
+        }
+    }  
+
+
+    .sidebar-filters {
+        width: 100%;
+        @media (max-width: 992px) {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            overflow: scroll;
+            width: 90vw;
+            z-index: 101;
+            background-color: $brand-white;
+            border-right: 1px solid  $border-color;
+            padding: $gutter;
+            &.closed {
+                display: none;
+            }
+        }
+
+        .filter-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 48px;
+            .filter-title {
+                @media (min-width: 992px) {
+                    display: flex;
+                    flex: 1;
+                    justify-content: space-between;
+                }
+            }
+            .clear-filters {
+                text-decoration: underline;
+                cursor: pointer;
+                @media (max-width: 992px) {
+                    display: flex;
+                }
+            }
+        }
+        .sidebar-closer {
+            display: none;
+            cursor: pointer;
+            @media (max-width: 992px) {
+                display: block;
+            }
+        }
+        .title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            border-bottom: 1px solid $border-color;
+            margin-bottom: 16px;
+            margin-top: 16px;
+            cursor: pointer;
+            p {
+                margin-bottom: 0;
+            }
+            .filter-arrow {
+                transition: $transition;
+                height: 25px;
+                margin-right: 3px;
+            }
+        }
+        .folding-portion {
+            transition: $transition;
+            margin-bottom: 10px;
+            padding: 0 8px;
+            a {
+                display: block;
+            }
+        }
+        .folding-filter-wrap {
+            &.open {
+                .filter-arrow {
+                    transform: rotate(90deg);
+                }
+
+            }
+            &.closed {
+                .filter-arrow {
+                    transform: rotate(00deg);
+                }
+
+                .folding-portion {
+                    overflow: hidden;
+                    max-height: 0;
+                }
+            }
+        }
+        .option-filters {
+            .folding-portion {
+
+            }
+        }
+
+        .collection-filter {
+            cursor: pointer;
+            margin-bottom: 8px;
+            &.selected {
+                font-weight: bold;
+            }
+        }
+
+        .tag-filter {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 8px;
+            .filter-checkbox {
+                height: 20px;
+                width: 20px;
+                border-radius: 2px;
+                border: 2px solid $brand-black;
+                position: relative;
+                margin-right: 8px;
+                /* img {
+                    position: absolute;
+                    height: 14px;
+                    top: -3px;
+                    left: 0px;
+                    display: none;
+                } */
+            }
+            &.selected {
+                font-weight: bold;
+                .filter-checkbox {
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        height: 12px;
+                        width: 12px;
+                        border-radius: 2px;
+                        background-color: $brand-black;
+                        top: 2px;
+                        left: 2px;
+                    }
+
+                }
+                /* .filter-checkbox {
+                    img {
+                        display: block;
+                    }
+                } */
+            }
+        }
+        .price-limits {
+            .price-input-wrap {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                margin-bottom: 16px;
+            }
+            input {
+                display: flex;
+                padding: 8px;
+                width: 48%;
+            }
+            .price-filter-button {
+                border: 1px solid $border-color;
+                height: 40px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 2px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .dropdown-col {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 32px;
+        @media (max-width: 992px) {
+            display: none;
+        }
+        .sort-by-wrap {
+            display: inline-flex;
+            align-items: center;
+        }
+        p {
+            margin-bottom: 0;
+        }
+        select {
+            border: none;
+            margin-bottom: 0;
+            text-decoration: underline;
+            width: 180px;
+        }
+    }
+
+    .sort-by-mobile {
+        display: none;
+        @media (max-width: 992px) {
+            display: flex;
+        }
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        width: 90vw;
+        z-index: 101;
+        background-color: $brand-white;
+        border-right: 1px solid  $border-color;
+        padding: $gutter;
+        flex-direction: column;
+        &.closed {
+            display: none;
+        }
+        .sort-heading {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 48px;
+        }
+
+        .sort-by-checkbox-row {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 24px;
+            .sort-by-checkbox {
+                height: 20px;
+                width: 20px;
+                border-radius: 2px;
+                border: 2px solid $brand-black;
+                position: relative;
+                margin-right: 8px;
+            }
+            &.selected {
+                font-weight: bold;
+                .sort-by-checkbox {
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        height: 12px;
+                        width: 12px;
+                        border-radius: 2px;
+                        background-color: $brand-black;
+                        top: 2px;
+                        left: 2px;
+                    }
+
+                }
+            }
+        }
+    }
+    .no-products {
+        h4{
+            font-size: 28px;
+            font-weight: 400;
+            margin-top: 24px;
+            a {
+                text-decoration: underline;
+            }
+        }
+    }
+    .mobile-collection-buttons {
+        justify-content: space-between;
+        display: none;
+        padding: 0 15px;
+        margin-bottom: 48px;
+        @media (max-width: 992px) {
+            display: flex;
+        }
+        .button {
+            width: 96px;
+        }
+
+
+    }
+    
+    .sidebar-veil {
+        &.closed {
+            display: none;
+        }
+        @media (max-width: 992px) {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 100;
+            background-color: rgba($color: $brand-black, $alpha: 0.2);
+        }
+    }
+}

@@ -1,0 +1,90 @@
+
+<div class="sidebar-filters closed">
+    <h4>Sort By</h4>
+    <div class="sort-by">
+        <select name="sort_by">
+            {% for option in collection.sort_options %}
+                <option value="{{ option.value }}">{{ option.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <h4>Filters</h4>
+
+
+    <!-- Collections -->
+    <!-- {% for collection in collections %}
+        <div class="collection-filter" data-collection="{{collection.handle}}">{{ collection.title }}</div>
+    {% endfor %} -->
+
+
+    <!-- Collections Selector -->
+    <div class="folding-filter-wrap open">
+        <div class="title-row filter-controller">
+            <p>Collections</p>
+            <img class="filter-arrow" src="{{ section.settings.filter_arrow | img_url: '20x' }}" alt="filter arrow" >
+        </div>
+        <div class="folding-portion">
+            <div class="collection-filter" data-collection="all">Shop All</div>
+            {% for collection in collections %}
+                <div class="collection-filter" data-collection="{{collection.handle}}">{{ collection.title }}</div>
+            {% endfor %}
+        </div>
+    </div> 
+
+
+    <!-- filters -->
+
+    <!-- Sizes -->
+    <div class="folding-filter-wrap open">
+        <div class="title-row filter-controller">
+            <p>Sizes</p>
+            <img class="filter-arrow" src="{{ section.settings.filter_arrow | img_url: '20x' }}" alt="filter arrow" >
+        </div>
+        <div class="folding-portion">
+            {% include 'filter-checkbox', filter_text: 'Small', filter_slug: 'size-sm' %}
+            {% include 'filter-checkbox', filter_text: 'Medium', filter_slug: 'size-md' %}
+            {% include 'filter-checkbox', filter_text: 'Large', filter_slug: 'size-lg' %}
+            {% include 'filter-checkbox', filter_text: 'XLarge', filter_slug: 'size-xl' %}
+        </div>
+    </div>
+
+    <!-- Colors -->
+    <div class="folding-filter-wrap open">
+        <div class="title-row filter-controller">
+            <p>Colours</p>
+            <img class="filter-arrow" src="{{ section.settings.filter_arrow | img_url: '20x' }}" alt="filter arrow" >
+        </div>
+        <div class="folding-portion">
+            {% include 'filter-checkbox', filter_text: 'White', filter_slug: 'colour-white' %}
+            {% include 'filter-checkbox', filter_text: 'Black', filter_slug: 'colour-black' %}
+            {% include 'filter-checkbox', filter_text: 'Red', filter_slug: 'colour-red' %}
+            {% include 'filter-checkbox', filter_text: 'Blue', filter_slug: 'colour-blue' %}
+            {% include 'filter-checkbox', filter_text: 'Green', filter_slug: 'colour-green' %}
+            {% include 'filter-checkbox', filter_text: 'Purple', filter_slug: 'colour-purple' %}
+        </div>
+    </div>
+
+</div>
+
+
+<!-- mobile Veil -->
+<div class="sidebar-veil closed"></div>
+
+{% schema %}
+    {
+        "name": "Sidebar Filter",
+        "class": "sidebar-filter",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "filter_arrow",
+                "label": "Filter arrow"
+            },
+            {
+                "type": "image_picker",
+                "id": "filter_check",
+                "label": "Filter Check"
+            }
+        ]
+    }
+{% endschema %}

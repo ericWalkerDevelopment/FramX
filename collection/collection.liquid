@@ -1,0 +1,25 @@
+<div class="page-wrap collection">
+    <section class="container">
+        {% section 'collection-ajax-banner' %}
+        <div class="row mobile-collection-buttons">
+            <div class="button inline bordered" id="sidebar-filter-toggler">
+                Filter
+            </div>
+
+            <div class="button inline bordered" id="sidebar-sort-by-toggler">
+                Sort
+            </div>
+        </div>
+        {% include 'sort-by-mobile' %}
+        <div class="row">
+            <div class="col-lg-3">
+                {% section 'collection-ajax-filter' %}
+            </div>
+            <div class="col-lg-9 product-listing">
+                {% paginate collection.products by limit %}
+                    {% section 'collection-ajax' %} 
+                {% endpaginate %}
+            </div>
+        </div> 
+    </section>
+</div>

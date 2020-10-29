@@ -1,0 +1,28 @@
+
+<div class="collection-banner-background hidden">
+    <h1 class="collection-name" id="collection-name"></h1>
+</div>
+<div class="collection-banner-background-default" style="background-image: url({{ section.settings.default_banner_image | img_url: '1200x'}});">
+    <h1 class="collection-name">{{ section.settings.default_banner_text }}</h1>
+</div>
+
+
+{% schema %}
+    {
+        "name": "Collection Banner",
+        "class": "collection-banner",
+        "settings": [
+            {
+                "type": "text",
+                "id": "default_banner_text",
+                "label": "Default Banner Text",
+                "default": "All Products"
+            },
+            {
+                "type": "image_picker",
+                "id": "default_banner_image",
+                "label": "Default Banner Image"
+            }
+        ]
+    }
+{% endschema %}
